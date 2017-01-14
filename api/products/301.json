@@ -1,0 +1,32 @@
+[
+   {
+      "id":1,
+      "colCode":301,
+      "colName":"Adaikalamatha Institute of Management (Co-Ed)",
+      "oc":10,
+      "bc":8,
+      "bcm":1,
+      "mbc":6,
+      "sc":4,
+      "sca":1,
+      "st":0,
+      "totsa":30,
+      "times":"6-00PM",
+      "idate":"2016-08-04"
+   },
+   {
+      "id":167,
+      "colCode":301,
+      "colName":"Adaikalamatha Institute of Management  (Co-Ed)",
+      "oc":6,
+      "bc":4,
+      "bcm":0,
+      "mbc":3,
+      "sc":2,
+      "sca":0,
+      "st":0,
+      "totsa":15,
+      "times":"12-00NOON",
+      "idate":"2016-08-05"
+   }
+]

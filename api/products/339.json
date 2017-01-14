@@ -1,0 +1,32 @@
+[
+   {
+      "id":1,
+      "colCode":339,
+      "colName":"Gurunanak College (A) , Velachery.",
+      "oc":10,
+      "bc":8,
+      "bcm":1,
+      "mbc":6,
+      "sc":4,
+      "sca":1,
+      "st":0,
+      "totsa":30,
+      "times":"6-00PM",
+      "idate":"2016-08-04"
+   },
+   {
+      "id":167,
+      "colCode":339,
+      "colName":"Gurunanak College (A) , Velachery",
+      "oc":10,
+      "bc":8,
+      "bcm":1,
+      "mbc":6,
+      "sc":4,
+      "sca":1,
+      "st":0,
+      "totsa":30,
+      "times":"12-00NOON",
+      "idate":"2016-08-05"
+   }
+]

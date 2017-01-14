@@ -1,0 +1,40 @@
+<div class='panel panel-success'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Products   -->
+    <div class='panel-body'>
+        
+
+        
+
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='products && products.length'>
+                <thead>
+                    <tr>
+                       
+                        <th>College Name</th>
+                        <th>Counselling Code</th>
+                        <th>Updated Date</th>
+                        <th>Seats Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of products'>
+                        
+                        <td><a [routerLink]="['/product', product.colCode]">
+                            {{product.colName}}
+                            </a>
+                        </td>
+                        <td>{{ product.colCode  }}</td>
+                        <td>{{ product.times }}</td>
+                        <td>{{ product.totsa  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

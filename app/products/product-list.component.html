@@ -1,0 +1,50 @@
+<div class='panel panel-success'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Products   -->
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class='row' *ngIf='listFilter'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='products && products.length'>
+                <thead>
+                    <tr>
+                       
+                        <th>College Name</th>
+                        <th>Counselling Code</th>
+                        <th>Updated Date</th>
+                        <th>Seats Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of products | productFilter:listFilter'>
+                        
+                        <td><a [routerLink]="['/product', product.colCode]">
+                            {{product.colName}}
+                            </a>
+                        </td>
+                        <td>{{ product.colCode  }}</td>
+                        <td>{{ product.times }}</td>
+                        <td>{{ product.totsa  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

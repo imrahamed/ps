@@ -1,0 +1,54 @@
+<div class='panel panel-success' *ngIf='product'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + product.colName}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-4'>Name:</div>
+                    <div class='col-md-6'>{{product.colName}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Code:</div>
+                    <div class='col-md-6'>{{product.colCode}}</div>
+                </div>
+                
+                <div class='row'>
+                    <div class='col-md-4'>Availability:</div>
+                    <div class='col-md-6'>{{product.times}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Seats Available:</div>
+                    <div class='col-md-6'>{{product.totsa}}</div>
+                </div>
+                 <div class='row'>
+                    <div class='col-md-4'>Sc Seats Available:</div>
+                    <div class='col-md-6'>{{product.sc}}</div>
+                </div>
+                 <div class='row'>
+                    <div class='col-md-4'>Bc Seats Available:</div>
+                    <div class='col-md-6'>{{product.bc}}</div>
+                </div>
+                 <div class='row'>
+                    <div class='col-md-4'>Bcm Seats Available:</div>
+                    <div class='col-md-6'>{{product.bcm}}</div>
+                </div>
+                 <div class='row'>
+                    <div class='col-md-4'>Oc Seats Available:</div>
+                    <div class='col-md-6'>{{product.oc}}</div>
+                </div>
+                
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>

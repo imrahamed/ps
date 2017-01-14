@@ -1,0 +1,59 @@
+
+
+<div class='panel panel-primary' *ngIf='products'>
+    <div class='panel-heading' style='font-size:large'>
+        
+        {{pageTitle + ': '}}
+    </div>
+
+    <!-- Filter the Products   -->
+    <div class='panel-body'>
+        
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+        
+
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='products && products.length'>
+                   {{products.colName}}
+                <thead>
+                    <tr>
+                       <th> </th>
+                        <th>College</th>
+                        <th>Counselling Code</th>
+                        <th>Date</th>
+                        <th>Session</th>
+                        <th>Seats Available</th>
+                        <th>Oc Seats Available</th>
+                        <th>Sc Available</th>
+                        <th>Bc Available</th>
+                        <th>Bcm Available</th>
+                        <th>Sca Available</th>
+                        <th>st Available</th>
+                        <th>mbc Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products;let first = first; let last = last" 
+    [ngClass]="{ first: first, last: last }">
+                        <td><b>{{first ? 'At the Begining' : 'Current Status'}}</b></td>
+                       <td>{{first ? product.colName : " " }}</td>
+                        <td>{{first ? product.colCode : " " }}</td>
+                        <td>{{ product.idate}}</td>
+                        <td>{{ product.times}}</td>
+                        <td>{{ product.totsa  }}</td>
+                        <td>{{ product.oc  }}</td>
+                        <td>{{ product.sc  }}</td>
+                        <td>{{ product.bc  }}</td>
+                        <td>{{ product.bcm  }}</td>
+                        <td>{{ product.sca  }}</td>
+                        <td>{{ product.st  }}</td>
+                        <td>{{ product.mbc  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
