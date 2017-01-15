@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
     errorMessage: string;
 
     products: IProduct[];
+    fillings: IProduct[];
 
     constructor(private _productService: ProductService) {
 
@@ -25,7 +26,10 @@ export class ProductListComponent implements OnInit {
         this._productService.getProducts()
                 .subscribe(products => this.products = products,
                            error => this.errorMessage = <any>error);
+                            
+
     }
+    
 
     onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;

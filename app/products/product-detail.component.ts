@@ -11,15 +11,28 @@ import { ProductService } from './product.service';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
     pageTitle: string = 'Status';
+    analytic: string = 'Overall Status';
     products: IProduct[];
+    fillings: IProduct[];
     errorMessage: string;
     private sub: Subscription;
+    overAll: boolean = false;
+    fill: boolean = false;
     colname:string;
+    pro:IProduct;
     
 
     constructor(private _route: ActivatedRoute,
                 private _router: Router,
                 private _productService: ProductService) {
+    }
+     togglefull(): void {
+        this.overAll = !this.overAll;
+        this.fill=false;
+    }
+    togglefill(): void {
+        this.fill = !this.fill;
+        this.overAll=false;
     }
 
     ngOnInit(): void {
@@ -28,6 +41,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
                 let colCode = +params['colCode'];
                 this.getStatus(colCode);
         });
+        this.sub = this._route.params.subscribe(
+            params => {
+                let colCode = +params['colCode'];
+                this.getFilling(colCode);
+        });
+        this.sub = this._route.params.subscribe(
+            params => {
+                let colCode = +params['colCode'];
+                this.getProduct(colCode);
+        });
+        
     }
 
     ngOnDestroy() {
@@ -38,8 +62,19 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this._productService.getStatus(colCode).subscribe(
             products => this.products = products, 
             error => this.errorMessage = <any>error);
-            console.log(this.products)
             
+    }
+    getFilling(colCode: number){
+        this._productService.getFilling(colCode).subscribe(
+            fillings => this.fillings = fillings, 
+            error => this.errorMessage = <any>error);
+            
+    }
+     getProduct(colCode: number){
+        this._productService.getProduct(colCode).subscribe(
+            pro => this.pro = pro, 
+            error => this.errorMessage = <any>error);
+            console.log(this.pro)
     }
 
     onBack(): void {

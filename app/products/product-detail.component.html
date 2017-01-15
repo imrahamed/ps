@@ -1,9 +1,9 @@
 
 
-<div class='panel panel-primary' *ngIf='products'>
+<div class='panel panel-primary' *ngIf='pro'>
     <div class='panel-heading' style='font-size:large'>
         
-        {{pageTitle + ': '}}
+        {{pro.colName}}
     </div>
 
     <!-- Filter the Products   -->
@@ -16,12 +16,11 @@
         <div class='table-responsive'>
             <table class='table'
                    *ngIf='products && products.length'>
-                   {{products.colName}}
+                   
                 <thead>
                     <tr>
                        <th> </th>
-                        <th>College</th>
-                        <th>Counselling Code</th>
+                        
                         <th>Date</th>
                         <th>Session</th>
                         <th>Seats Available</th>
@@ -37,19 +36,136 @@
                 <tbody>
                     <tr *ngFor="let product of products;let first = first; let last = last" 
     [ngClass]="{ first: first, last: last }">
-                        <td><b>{{first ? 'At the Begining' : 'Current Status'}}</b></td>
-                       <td>{{first ? product.colName : " " }}</td>
-                        <td>{{first ? product.colCode : " " }}</td>
+                        <td><b>{{first ? 'At the Begining' : last ? 'Current Status' : ""}}</b></td>
+                       
+                        <td>{{ first || last ? product.idate: "" }}</td>
+                        <td>{{ first || last ? product.times : "" }}</td>
+                        <td>{{ first || last ? product.totsa : ""  }}</td>
+                        <td>{{ first || last ? product.oc : ""   }}</td>
+                        <td>{{ first || last ? product.sc : ""  }}</td>
+                        <td>{{ first || last ? product.bc : ""   }}</td>
+                        <td>{{ first || last ? product.bcm : ""  }}</td>
+                        <td>{{ first || last ? product.sca : ""  }}</td>
+                        <td>{{ first || last ? product.st : ""  }}</td>
+                        <td>{{ first || last ? product.mbc : ""   }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<button class='btn btn-danger'
+                                (click)='togglefull()'>
+                                {{showImage ? 'Hide' : 'Show'}} Full Status
+                            </button>
+<button class='btn btn-warning'
+                                (click)='togglefill()'>
+                                {{showImage ? 'Hide' : 'Show'}} Filling Rate
+                            </button>
+
+<div class='panel panel-danger' *ngIf='overAll'>
+    <div class='panel-heading' style='font-size:large'>
+        
+        {{analytic + ': '}}
+    </div>
+
+    <!-- Filter the Products   -->
+    <div class='panel-body'>
+        
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+        
+
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='products && products.length'>
+                   
+                <thead>
+                    <tr>
+                       
+                        
+                        <th>Date</th>
+                        <th>Session</th>
+                        <th>Seats Available</th>
+                        <th>Oc Seats Available</th>
+                        <th>Sc Available</th>
+                        <th>Bc Available</th>
+                        <th>Bcm Available</th>
+                        <th>Sca Available</th>
+                        <th>st Available</th>
+                        <th>mbc Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products;let first = first; let last = last" 
+    [ngClass]="{ first: first, last: last }">
+                        
                         <td>{{ product.idate}}</td>
-                        <td>{{ product.times}}</td>
+                        <td>{{ product.times }}</td>
                         <td>{{ product.totsa  }}</td>
-                        <td>{{ product.oc  }}</td>
-                        <td>{{ product.sc  }}</td>
+                        <td>{{ product.oc   }}</td>
+                        <td>{{ product.sc   }}</td>
                         <td>{{ product.bc  }}</td>
                         <td>{{ product.bcm  }}</td>
-                        <td>{{ product.sca  }}</td>
+                        <td>{{ product.sca   }}</td>
                         <td>{{ product.st  }}</td>
-                        <td>{{ product.mbc  }}</td>
+                        <td>{{ product.mbc }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class='panel panel-warning' *ngIf='fill'>
+    <div class='panel-heading' style='font-size:large'>
+        
+        {{"Filling Rate :"}}
+    </div>
+
+    <!-- Filter the Products   -->
+    <div class='panel-body'>
+        
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+        
+
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='products && products.length'>
+                   
+                <thead>
+                    <tr>
+                       
+                        
+                        <th>Date</th>
+                        <th>Session</th>
+                        <th>Seats Filled</th>
+                        <th>Oc Seats Filled</th>
+                        <th>Sc Filled</th>
+                        <th>Bc Filled</th>
+                        <th>Bcm Filled</th>
+                        <th>Sca Filled</th>
+                        <th>st Filled</th>
+                        <th>mbc Filled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let filling of fillings;let first = first; let last = last" 
+    [ngClass]="{ first: first, last: last }">
+                        
+                       
+                        <td>{{ filling.idate}}</td>
+                        <td>{{ filling.times }}</td>
+                        <td>{{ filling.totsa  }}</td>
+                        <td>{{ filling.oc   }}</td>
+                        <td>{{ filling.sc   }}</td>
+                        <td>{{ filling.bc  }}</td>
+                        <td>{{ filling.bcm  }}</td>
+                        <td>{{ filling.sca   }}</td>
+                        <td>{{ filling.st  }}</td>
+                        <td>{{ filling.mbc }}</td>
                         
                     </tr>
                 </tbody>

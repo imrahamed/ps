@@ -35,6 +35,12 @@ var ProductService = (function () {
         return this.getProducts()
             .map(function (products) { return products.find(function (p) { return p.colCode === colCode; }); });
     };
+    ProductService.prototype.getFilling = function (colCode) {
+        return this._http.get(this._productUrl + 'filling/' + colCode + '.json')
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     ProductService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

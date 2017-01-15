@@ -28,5 +28,20 @@
       "totsa":8,
       "times":"12-00NOON",
       "idate":"2016-08-05"
+   },
+   {
+      "id":167,
+      "colCode":339,
+      "colName":"The American college(Co-Ed), ",
+      "oc":0,
+      "bc":3,
+      "bcm":1,
+      "mbc":2,
+      "sc":2,
+      "sca":0,
+      "st":0,
+      "totsa":8,
+      "times":"12-00NOON",
+      "idate":"2016-08-06"
    }
 ]

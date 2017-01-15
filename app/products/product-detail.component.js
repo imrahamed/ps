@@ -17,12 +17,31 @@ var ProductDetailComponent = (function () {
         this._router = _router;
         this._productService = _productService;
         this.pageTitle = 'Status';
+        this.analytic = 'Overall Status';
+        this.overAll = false;
+        this.fill = false;
     }
+    ProductDetailComponent.prototype.togglefull = function () {
+        this.overAll = !this.overAll;
+        this.fill = false;
+    };
+    ProductDetailComponent.prototype.togglefill = function () {
+        this.fill = !this.fill;
+        this.overAll = false;
+    };
     ProductDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this._route.params.subscribe(function (params) {
             var colCode = +params['colCode'];
             _this.getStatus(colCode);
+        });
+        this.sub = this._route.params.subscribe(function (params) {
+            var colCode = +params['colCode'];
+            _this.getFilling(colCode);
+        });
+        this.sub = this._route.params.subscribe(function (params) {
+            var colCode = +params['colCode'];
+            _this.getProduct(colCode);
         });
     };
     ProductDetailComponent.prototype.ngOnDestroy = function () {
@@ -31,7 +50,15 @@ var ProductDetailComponent = (function () {
     ProductDetailComponent.prototype.getStatus = function (colCode) {
         var _this = this;
         this._productService.getStatus(colCode).subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
-        console.log(this.products);
+    };
+    ProductDetailComponent.prototype.getFilling = function (colCode) {
+        var _this = this;
+        this._productService.getFilling(colCode).subscribe(function (fillings) { return _this.fillings = fillings; }, function (error) { return _this.errorMessage = error; });
+    };
+    ProductDetailComponent.prototype.getProduct = function (colCode) {
+        var _this = this;
+        this._productService.getProduct(colCode).subscribe(function (pro) { return _this.pro = pro; }, function (error) { return _this.errorMessage = error; });
+        console.log(this.pro);
     };
     ProductDetailComponent.prototype.onBack = function () {
         this._router.navigate(['/arts']);

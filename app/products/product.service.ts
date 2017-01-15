@@ -31,6 +31,12 @@ export class ProductService {
         return this.getProducts()
             .map((products: IProduct[]) => products.find(p => p.colCode === colCode));
     }
+    getFilling(colCode: number): Observable<IProduct[]> {
+        return this._http.get(this._productUrl+ 'filling/'+ colCode +'.json')
+            .map((response: Response) => <IProduct[]> response.json())
+            .do(data => console.log('All: ' +  JSON.stringify(data)))
+            .catch(this.handleError);
+    }
 
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
